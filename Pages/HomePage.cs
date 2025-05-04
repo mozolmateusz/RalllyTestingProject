@@ -1,5 +1,4 @@
 ﻿using OpenQA.Selenium;
-using SeleniumExtras.WaitHelpers;
 
 namespace RalllyTestingProject.Pages
 {
@@ -8,6 +7,7 @@ namespace RalllyTestingProject.Pages
         // Locators
         private readonly By _signInLink = By.CssSelector("a[href=\"https://app.rallly.co/login\"]"); //By.XPath("//a[contains(text(), 'Sign in')]");
         private readonly By _signUpLink = By.CssSelector("a[href=\"https://app.rallly.co/register\"]"); //By.XPath("//a[contains(text(), 'Sign Up')]");
+        private readonly By _createPollButton = By.CssSelector("a[href=\"https://app.rallly.co/new\"]");
 
         private const string HomeUrl = "https://rallly.co/en";
 
@@ -44,6 +44,13 @@ namespace RalllyTestingProject.Pages
         public string GetTitle()
         {
             return Driver.Title;
+        }
+
+        //Click on the "Create a Meeting Poll" link
+        public HomePage ClickCreatePoll()
+        {
+            WaitUntilClickable(_createPollButton).Click();
+            return this;
         }
     }
 }
